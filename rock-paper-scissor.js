@@ -5,8 +5,8 @@ function getHand() { //Gethand returns a random hand of rock, paper or scissor
     return hands[randomNumber]; //returns hands with random number which is r, p, or s 
 }
 
-let handOne = {name: "Cat" , getHand: function() { return getHand(); }}; // This is an objeect that defines two properties, name and gethand
-let handTwo = {name: "Dog" , getHand: function() { return getHand(); }}; // This is an objeect that defines two properties, name and gethand
+let handOne = {name: "Cat" , getHand: function() { return getHand(); }, winCount: 0}; // This is an objeect that defines two properties, name and gethand
+let handTwo = {name: "Dog" , getHand: function() { return getHand(); },  winCount: 0}; // This is an objeect that defines two properties, name and gethand
 let handOneWin = 0; // variable that is a number
 let handTwoWin = 0; // variable that is a number
 let totalGameCount = 0; // variable that is a number
@@ -24,6 +24,7 @@ function playRound(handOne, handTwo){ //play a round of rock, paper, scissor
     }
     else if (handOneChoice == "rock"){
         if (handTwoChoice == "paper") {
+            // handTwo.winCount +=1;
             handTwoWin +=1; 
             totalGameCount +=1;
             console.log(totalGameCount + ". " + handTwo.name + " wins game ");
@@ -68,6 +69,10 @@ function playGame(handOne , handTwo , playUntil){ // keep playing until one play
     }
 }
 function result(){ //result of the round
+    // reset for round 3
+    //handOne.winCount = 0;
+    //handTwo.winCount = 0;
+
     playGame(handOne , handTwo , 5); //play until one hand has won 5 times
     if (handOneWin > handTwoWin) { 
         console.log(handOne.name + "wins game of " + handOneWin + " out of " + totalGameCount); 
@@ -77,6 +82,12 @@ function result(){ //result of the round
     {
         console.log("tie game"); //there should never be a tie game, but can have tie rounds. 
     }
+
+    // return handOne or handTwo;
 }
 
 result(); //plays and prints results of the games played.
+
+// var bracket1 = result(handOne, handTwo);
+// var bracket2 = result(handThree, handFour);
+// var winner = result(bracket1, bracket2)
